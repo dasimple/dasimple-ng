@@ -1,0 +1,51 @@
+<button
+  type="button"
+  mat-icon-button
+  [matMenuTriggerFor]="themeMenu"
+  [matMenuTriggerRestoreFocus]="menuTriggerRestoreFocus"
+  [matTooltip]="translateNamespace + 'picker.tooltip' | translate">
+  <mat-icon [ngSwitch]="current$ | async">
+    <ng-template [ngSwitchCase]="false">{{iconLight}}</ng-template>
+    <ng-template [ngSwitchCase]="true">{{iconDark}}</ng-template>
+    <ng-template [ngSwitchCase]="null">{{iconAuto}}</ng-template>
+  </mat-icon>
+</button>
+
+<mat-menu
+  #themeMenu="matMenu"
+  [xPosition]="menuXPosition"
+  [yPosition]="menuYPosition"
+  [overlapTrigger]="menuOverlapTrigger"
+  class="theme-picker-menu">
+  <ng-template #checkedIcon let-checked>
+    <mat-icon [color]="checked ? checkedColor : ''">
+      {{checked ? iconChecked : iconUnchecked}}
+    </mat-icon>
+  </ng-template>
+  <ng-template #menuButton let-value let-label="label" let-icon="icon">
+    <button mat-menu-item (click)="selectWithTimeout(value)">
+      <ng-container *ngTemplateOutlet="checkedIcon; context: { $implicit: (current$ | async) === value }" matMenuItemIcon></ng-container>
+      <span class="theme-picker-menu-button-label">{{translateNamespace + 'menu.' + label | translate}}</span>
+      <mat-icon class="theme-picker-menu-button-icon">{{icon}}</mat-icon>
+    </button>
+  </ng-template>
+
+  <ng-container *ngTemplateOutlet="menuButton; context: {
+    $implicit: false,
+    label: 'light',
+    icon: iconLight
+  }">
+  </ng-container>
+  <ng-container *ngTemplateOutlet="menuButton; context: {
+    $implicit: true,
+    label: 'dark',
+    icon: iconDark
+  }">
+  </ng-container>
+  <ng-container *ngTemplateOutlet="menuButton; context: {
+    $implicit: null,
+    label: 'auto',
+    icon: iconAuto
+  }">
+  </ng-container>
+</mat-menu>

@@ -19,6 +19,9 @@
     "paths": {
       "responsive-toolbar": [
         "dist/responsive-toolbar"
+      ],
+      "theming": [
+        "dist/theming"
       ]
     },
     "target": "ES2022",
