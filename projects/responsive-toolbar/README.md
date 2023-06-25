@@ -1,7 +1,6 @@
 ## Tokens
 
-Provide `RESPONSIVE_TOOLBAR_BREAKPOINT` to set default breakpoint for toolbar.
-Default is `Breakpoints.HandsetPortrait`.
+Provide `RESPONSIVE_TOOLBAR_BREAKPOINT` to set default breakpoint for toolbar. Default is `Breakpoints.HandsetPortrait`.
 
 ## Component
 

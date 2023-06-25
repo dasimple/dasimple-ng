@@ -8,7 +8,7 @@ import { DarkThemeState } from '../../state/dark-theme.state';
 import { SelectTheme } from '../../state/dark-theme.actions';
 
 @Component({
-  selector: 'gtrade-theme-picker',
+  selector: 'dasimple-theme-picker',
   templateUrl: './theme-picker.component.html',
   styleUrls: ['./theme-picker.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,11 +27,11 @@ export class ThemePickerComponent {
   /* End forwards */
 
   @Input() checkedColor: ThemePalette = 'accent';
+  @Input() iconChecked = 'radio_button_checked';
+  @Input() iconUnchecked = 'radio_button_unchecked';
   @Input() iconLight = 'light_mode';
   @Input() iconDark = 'dark_mode';
   @Input() iconAuto = 'invert_colors';
-  @Input() iconChecked = 'radio_button_checked';
-  @Input() iconUnchecked = 'radio_button_unchecked';
 
   constructor(
     @Inject(MAT_MENU_DEFAULT_OPTIONS) menuDefaultOptions: MatMenuDefaultOptions,
