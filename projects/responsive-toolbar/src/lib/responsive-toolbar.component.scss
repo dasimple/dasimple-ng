@@ -1,0 +1,23 @@
+.responsive-toolbar.mat-toolbar-single-row {
+  padding: 0 8px;
+}
+
+/*
+  Multiple rows is only when breakpoint is matched.
+*/
+.responsive-toolbar.mat-toolbar-multiple-rows > .mat-toolbar-row {
+  padding: 0 4px;
+
+  &.responsive-toolbar-title-row {
+    padding-left: 72px;
+  }
+}
+
+.responsive-toolbar-menu-button {
+  margin-inline-end: 16px;
+}
+
+.responsive-toolbar-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

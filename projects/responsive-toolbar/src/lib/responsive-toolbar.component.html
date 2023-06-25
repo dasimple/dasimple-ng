@@ -1,0 +1,34 @@
+<ng-template #menuButton>
+  <button mat-icon-button (click)="menuClick.emit()" class="responsive-toolbar-menu-button">
+    <mat-icon>menu</mat-icon>
+  </button>
+</ng-template>
+<ng-template #title>
+  <ng-content></ng-content>
+</ng-template>
+<ng-template #buttons>
+  <ng-content select="[responsiveToolbarButtons]"></ng-content>
+</ng-template>
+<ng-container *ngIf="bigToolbar$ | async; else regularToolbar">
+  <mat-toolbar [color]="color" class="responsive-toolbar">
+    <mat-toolbar-row>
+      <ng-container *ngTemplateOutlet="menuButton"></ng-container>
+      <span style="flex-grow: 1;"></span>
+      <ng-container *ngTemplateOutlet="buttons"></ng-container>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="responsive-toolbar-title-row">
+      <h1 class="responsive-toolbar-title">
+        <ng-container *ngTemplateOutlet="title"></ng-container>
+      </h1>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</ng-container>
+<ng-template #regularToolbar>
+  <mat-toolbar [color]="color" class="responsive-toolbar">
+    <ng-container *ngTemplateOutlet="menuButton"></ng-container>
+    <h1 class="responsive-toolbar-title" style="flex-grow: 1;">
+      <ng-container *ngTemplateOutlet="title"></ng-container>
+    </h1>
+    <ng-container *ngTemplateOutlet="buttons"></ng-container>
+  </mat-toolbar>
+</ng-template>

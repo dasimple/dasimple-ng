@@ -1,24 +1,12 @@
-# ResponsiveToolbar
+## Tokens
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+Provide `RESPONSIVE_TOOLBAR_BREAKPOINT` to set default breakpoint for toolbar.
+Default is `Breakpoints.HandsetPortrait`.
 
-## Code scaffolding
+## Component
 
-Run `ng generate component component-name --project responsive-toolbar` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project responsive-toolbar`.
-> Note: Don't forget to add `--project responsive-toolbar` or else it will be added to the default project in your `angular.json` file. 
+Use `<dasimple-responsive-toolbar></dasimple-responsive-toolbar>` with inputs: `[color]`, `[breakpoint]` and outputs: `(menuClick)`.
 
-## Build
+## Module
 
-Run `ng build responsive-toolbar` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Publishing
-
-After building your library with `ng build responsive-toolbar`, go to the dist folder `cd dist/responsive-toolbar` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test responsive-toolbar` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Import `ResponsiveToolbarModule` in application.
