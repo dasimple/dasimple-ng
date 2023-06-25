@@ -1,10 +1,8 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Input, OnInit, Optional, Output, ViewEncapsulation } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { Observable, map, startWith } from 'rxjs';
 import { RESPONSIVE_TOOLBAR_BREAKPOINT } from './responsive-toolbar-breakpoint';
-
-const DEFAULT_BREAKPOINT = Breakpoints.HandsetPortrait;
 
 @Component({
   selector: 'dasimple-responsive-toolbar',
@@ -22,31 +20,33 @@ export class ResponsiveToolbarComponent implements OnInit {
   get breakpoint() {
     return this._breakpoint;
   }
-  set breakpoint(value: string | readonly string[]) {
+  set breakpoint(value: string | readonly string[] | undefined) {
     this._breakpoint = value;
 
-    this.observeBreakpoint(value);
+    if (value) {
+      this.observeBreakpoint(value);
+    }
   }
 
   @Output() menuClick = new EventEmitter<void>();
 
-  bigToolbar$!: Observable<boolean>;
+  isBigToolbar$!: Observable<boolean>;
 
-  private _breakpoint!: string | readonly string[];
+  private _breakpoint: string | readonly string[] | undefined;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    @Optional() @Inject(RESPONSIVE_TOOLBAR_BREAKPOINT) private defaultBreakpoint: string | readonly string[] | null,
+    @Inject(RESPONSIVE_TOOLBAR_BREAKPOINT) private defaultBreakpoint: string | readonly string[],
   ) { }
 
   ngOnInit() {
     if (!this.breakpoint) {
-      this.observeBreakpoint(this.defaultBreakpoint || DEFAULT_BREAKPOINT);
+      this.observeBreakpoint(this.defaultBreakpoint);
     }
   }
 
   private observeBreakpoint(value: string | readonly string[]) {
-    this.bigToolbar$ = this.breakpointObserver.observe(value).pipe(
+    this.isBigToolbar$ = this.breakpointObserver.observe(value).pipe(
       map((state) => state.matches),
       startWith(this.breakpointObserver.isMatched(value)),
     );

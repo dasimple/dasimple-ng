@@ -9,7 +9,7 @@
 <ng-template #buttons>
   <ng-content select="[responsiveToolbarButtons]"></ng-content>
 </ng-template>
-<ng-container *ngIf="bigToolbar$ | async; else regularToolbar">
+<ng-container *ngIf="isBigToolbar$ | async; else regularToolbar">
   <mat-toolbar [color]="color" class="responsive-toolbar">
     <mat-toolbar-row>
       <ng-container *ngTemplateOutlet="menuButton"></ng-container>
