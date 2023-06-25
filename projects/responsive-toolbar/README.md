@@ -5,7 +5,7 @@ Default is `Breakpoints.HandsetPortrait`.
 
 ## Component
 
-Use `<dasimple-responsive-toolbar></dasimple-responsive-toolbar>` with inputs: `[color]`, `[breakpoint]` and outputs: `(menuClick)`.
+Use `<dasimple-responsive-toolbar></dasimple-responsive-toolbar>` with inputs: `[color]` and outputs: `(menuClick)`.
 
 ## Module
 

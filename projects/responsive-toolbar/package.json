@@ -1,6 +1,6 @@
 {
   "name": "@dasimple/ng-responsive-toolbar",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "peerDependencies": {
     "@angular/cdk": "^16.1.0",
     "@angular/common": "^16.1.0",
